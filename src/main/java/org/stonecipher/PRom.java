@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class WirelessRedstone extends JavaPlugin implements Listener {
+public class PRom extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
