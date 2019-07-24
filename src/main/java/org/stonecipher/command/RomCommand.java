@@ -43,9 +43,7 @@ public class RomCommand implements CommandExecutor {
         }
 
         // Since no valid command should ever reach this point
-        commandSender.sendMessage(ChatColor.RED + "Unrecognized subcommand!");
-
-        return true;
+        return new VersionCommand("version", "prom.version").execute(commandSender, command, s, strings);
 
     }
 

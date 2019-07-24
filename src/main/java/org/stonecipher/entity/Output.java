@@ -2,6 +2,7 @@ package org.stonecipher.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Table;
 import java.util.UUID;
 
@@ -10,7 +11,7 @@ import java.util.UUID;
 public class Output {
 
     @Column (name = "output_romid")
-    private UUID id;
+    private long id;
 
     @Column (name = "output_sequence")
     private int sequence;
@@ -27,11 +28,11 @@ public class Output {
     @Column (name = "output_z")
     private int z;
 
-    public UUID getRomId() {
+    public long getRomId() {
         return id;
     }
 
-    public void setRomId(UUID id) {
+    public void setRomId(long id) {
         this.id = id;
     }
 

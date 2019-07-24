@@ -3,6 +3,7 @@ api-version: 1.13
 version: 1.0
 main: org.stonecipher.PRom
 name: PRom
+depend: [Vault, PlotSquared]
 
 commands:
   rom:

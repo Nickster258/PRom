@@ -1,9 +1,6 @@
 package org.stonecipher.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -12,11 +9,12 @@ import java.util.UUID;
 @Table (name = "rommanager_program")
 public class Program {
 
+    @Id
     @Column (name = "program_id")
-    private UUID id;
+    private long id;
 
     @Column (name = "program_romid")
-    private UUID romId;
+    private long romId;
 
     @Column (name = "program_title")
     private String title;
@@ -24,19 +22,19 @@ public class Program {
     @OneToMany
     private List<Cell> cells = new ArrayList<Cell>();
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public UUID getRomId() {
+    public long getRomId() {
         return romId;
     }
 
-    public void setRomId(UUID romId) {
+    public void setRomId(long romId) {
         this.romId = romId;
     }
 

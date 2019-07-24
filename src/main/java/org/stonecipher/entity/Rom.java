@@ -11,8 +11,9 @@ import java.util.UUID;
 @Table(name = "rommanager_rom")
 public class Rom {
 
+    @Id
     @Column (name = "rom_id", updatable = false, nullable = false)
-    private UUID id;
+    private long id;
 
     @Column (name = "rom_owner")
     private UUID owner;
@@ -75,11 +76,11 @@ public class Rom {
         outputs.remove(index);
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Input {
 
     @Column (name = "input_romid")
-    private UUID id;
+    private long id;
 
     @Column (name = "input_sequence")
     private int sequence;
@@ -24,11 +24,11 @@ public class Input {
     @Column (name = "input_z")
     private int z;
 
-    public UUID getRomId() {
+    public long getRomId() {
         return id;
     }
 
-    public void setRomId(UUID id) {
+    public void setRomId(long id) {
         this.id = id;
     }
 

@@ -10,13 +10,13 @@ public class ProgramRepositoryImpl implements ProgramRepository {
     private EntityManager entityManager;
 
     @Override
-    public Program getProgramById(UUID id) {
+    public Program getProgramById(long id) {
         return entityManager.find(Program.class, id);
     }
 
     @Override
     public void saveProgram(Program program) {
-        if (program.getId() == null) {
+        if (program.getId() < 0) {
             entityManager.persist(program);
         } else {
             entityManager.merge(program);

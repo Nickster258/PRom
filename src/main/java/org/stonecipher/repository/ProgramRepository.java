@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public interface ProgramRepository {
 
-    Program getProgramById(UUID id);
+    Program getProgramById(long id);
 
     void saveProgram(Program program);
 

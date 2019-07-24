@@ -9,11 +9,8 @@ import java.util.UUID;
 @Table (name = "rommanager_cell")
 public class Cell {
 
-    @Column (name = "cell_romid", updatable = false)
-    private UUID romId;
-
     @Column (name = "cell_programid")
-    private UUID programId;
+    private long programId;
 
     @Column (name = "cell_column")
     private int column;
@@ -24,19 +21,11 @@ public class Cell {
     @Column (name = "cell_value")
     private boolean value;
 
-    public UUID getRomId() {
-        return romId;
-    }
-
-    public void setRomId(UUID romId) {
-        this.romId = romId;
-    }
-
-    public UUID getProgramId() {
+    public long getProgramId() {
         return programId;
     }
 
-    public void setProgramId(UUID programId) {
+    public void setProgramId(long programId) {
         this.programId = programId;
     }
 
