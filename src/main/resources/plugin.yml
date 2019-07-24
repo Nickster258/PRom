@@ -3,3 +3,10 @@ api-version: 1.13
 version: 1.0
 main: org.stonecipher.PRom
 name: PRom
+
+commands:
+  rom:
+    description: CreateCommand, edit, and manage ROMs and programs
+    usage: /<command>
+    permission: prom.rom
+    permission-message: You don't have permission to run this command!

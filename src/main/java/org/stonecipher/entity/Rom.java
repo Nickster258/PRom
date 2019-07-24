@@ -1,53 +1,86 @@
 package org.stonecipher.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table(name = "rommanager_rom")
 public class Rom {
 
-    private String name;
-    private int bitWidth;
-    private int lines;
+    @Column (name = "rom_id", updatable = false, nullable = false)
+    private UUID id;
+
+    @Column (name = "rom_owner")
     private UUID owner;
-    private boolean[][] rom;
 
-    public Rom(String name, int bitWidth, int lines, UUID owner) {
-        this.name = name;
-        this.bitWidth = bitWidth;
-        this.lines = lines;
-        this.owner = owner;
-        this.rom = new boolean[bitWidth][lines];
+    @Column (name = "rom_width")
+    private int width;
+
+    @Column (name = "rom_length")
+    private int length;
+
+    @OneToMany
+    private List<Input> inputs = new ArrayList<Input>();
+
+    @OneToMany
+    private List<Output> outputs = new ArrayList<Output>();
+
+    public Output getOutputAt(int sequence) {
+        for (Output output : outputs) {
+            if (output.getSequence() == sequence) {
+                return output;
+            }
+        }
+        return null;
     }
 
-    public void setValueAt(int bit, int line, boolean value) {
-        rom[bit][line] = value;
+    public Input getInputAt(int sequence) {
+        for (Input input : inputs) {
+            if (input.getSequence() == sequence) {
+                return input;
+            }
+        }
+        return null;
     }
 
-    public boolean getValueAt(int bit, int line) {
-        return rom[bit][line];
+    public void addInput(Input input) {
+        inputs.add(input);
     }
 
-    public String getName() {
-        return name;
+    public void addOutput(Output output) {
+        outputs.add(output);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void removeInput(Input toRemove) {
+        int index = 0;
+        for (Input input : inputs) {
+            if (input.equals(toRemove)) {
+                index = inputs.indexOf(input);
+            }
+        }
+        inputs.remove(index);
     }
 
-    public int getBitWidth() {
-        return bitWidth;
+    public void removeOutput(Output toRemove) {
+        int index = 0;
+        for (Output output : outputs) {
+            if (output.equals(toRemove)) {
+                index = outputs.indexOf(output);
+            }
+        }
+        outputs.remove(index);
     }
 
-    public void setBitWidth(int bitWidth) {
-        this.bitWidth = bitWidth;
+    public UUID getId() {
+        return id;
     }
 
-    public int getLines() {
-        return lines;
-    }
-
-    public void setLines(int lines) {
-        this.lines = lines;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public UUID getOwner() {
@@ -58,11 +91,20 @@ public class Rom {
         this.owner = owner;
     }
 
-    public boolean[][] getRom() {
-        return rom;
+    public int getWidth() {
+        return width;
     }
 
-    public void setRom(boolean[][] rom) {
-        this.rom = rom;
+    public void setWidth(int width) {
+        this.width = width;
     }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int lines) {
+        this.length = length;
+    }
+
 }
