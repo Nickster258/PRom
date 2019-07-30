@@ -31,21 +31,13 @@ public class Rom {
     private List<Output> outputs = new ArrayList<Output>();
 
     public Output getOutputAt(int sequence) {
-        for (Output output : outputs) {
-            if (output.getSequence() == sequence) {
-                return output;
-            }
-        }
-        return null;
+        return outputs.stream()
+                .filter(output -> output.getSequence() == sequence).findFirst().get();
     }
 
     public Input getInputAt(int sequence) {
-        for (Input input : inputs) {
-            if (input.getSequence() == sequence) {
-                return input;
-            }
-        }
-        return null;
+        return inputs.stream()
+                .filter(input -> input.getSequence() == sequence).findFirst().get();
     }
 
     public void addInput(Input input) {
@@ -56,24 +48,12 @@ public class Rom {
         outputs.add(output);
     }
 
-    public void removeInput(Input toRemove) {
-        int index = 0;
-        for (Input input : inputs) {
-            if (input.equals(toRemove)) {
-                index = inputs.indexOf(input);
-            }
-        }
-        inputs.remove(index);
+    public void removeInput(Input input) {
+        inputs.remove(input);
     }
 
-    public void removeOutput(Output toRemove) {
-        int index = 0;
-        for (Output output : outputs) {
-            if (output.equals(toRemove)) {
-                index = outputs.indexOf(output);
-            }
-        }
-        outputs.remove(index);
+    public void removeOutput(Output output) {
+        outputs.remove(output);
     }
 
     public long getId() {
