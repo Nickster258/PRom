@@ -20,7 +20,7 @@ public class Program {
     private String title;
 
     @OneToMany
-    private List<Cell> cells = new ArrayList<Cell>();
+    private List<Cell> cells = new ArrayList<>();
 
     public long getId() {
         return id;

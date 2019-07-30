@@ -1,5 +1,7 @@
 package org.stonecipher.entity;
 
+import org.bukkit.Location;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -27,6 +29,13 @@ public class Output {
 
     @Column (name = "output_z")
     private int z;
+
+    public Output(Location location, int sequence) {
+        this.x = location.getBlockX();
+        this.y = location.getBlockY();
+        this.z = location.getBlockZ();
+        this.sequence = sequence;
+    }
 
     public long getRomId() {
         return id;

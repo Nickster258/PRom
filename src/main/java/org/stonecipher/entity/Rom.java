@@ -15,8 +15,17 @@ public class Rom {
     @Column (name = "rom_id", updatable = false, nullable = false)
     private long id;
 
+    @Column (name = "rom_world")
+    private UUID world;
+
     @Column (name = "rom_owner")
     private UUID owner;
+
+    @Column (name = "rom_name")
+    private String name;
+
+    @Column (name = "rom_addressable")
+    private int addressable;
 
     @Column (name = "rom_width")
     private int width;
@@ -25,10 +34,10 @@ public class Rom {
     private int length;
 
     @OneToMany
-    private List<Input> inputs = new ArrayList<Input>();
+    private List<Input> inputs = new ArrayList<>();
 
     @OneToMany
-    private List<Output> outputs = new ArrayList<Output>();
+    private List<Output> outputs = new ArrayList<>();
 
     public Output getOutputAt(int sequence) {
         return outputs.stream()
@@ -56,6 +65,14 @@ public class Rom {
         outputs.remove(output);
     }
 
+    public void removeInputAt(int index) {
+        inputs.remove(index);
+    }
+
+    public void removeOutputAt(int index) {
+        outputs.remove(index);
+    }
+
     public long getId() {
         return id;
     }
@@ -64,12 +81,36 @@ public class Rom {
         this.id = id;
     }
 
+    public UUID getWorld() {
+        return world;
+    }
+
+    public void setWorld(UUID world) {
+        this.world = world;
+    }
+
     public UUID getOwner() {
         return owner;
     }
 
     public void setOwner(UUID owner) {
         this.owner = owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAddressable() {
+        return addressable;
+    }
+
+    public void setAddressable(int addressable) {
+        this.addressable = addressable;
     }
 
     public int getWidth() {

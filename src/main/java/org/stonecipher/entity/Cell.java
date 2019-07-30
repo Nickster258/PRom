@@ -18,9 +18,6 @@ public class Cell {
     @Column (name = "cell_row")
     private int row;
 
-    @Column (name = "cell_value")
-    private boolean value;
-
     public long getProgramId() {
         return programId;
     }
@@ -43,14 +40,6 @@ public class Cell {
 
     public void setRow(int row) {
         this.row = row;
-    }
-
-    public boolean getValue() {
-        return value;
-    }
-
-    public void setValue(boolean value) {
-        this.value = value;
     }
 
 }

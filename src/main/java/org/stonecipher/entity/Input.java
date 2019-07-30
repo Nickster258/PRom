@@ -1,5 +1,7 @@
 package org.stonecipher.entity;
 
+import org.bukkit.Location;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -23,6 +25,13 @@ public class Input {
 
     @Column (name = "input_z")
     private int z;
+
+    public Input(Location location, int sequence) {
+        this.x = location.getBlockX();
+        this.y = location.getBlockY();
+        this.z = location.getBlockZ();
+        this.sequence = sequence;
+    }
 
     public long getRomId() {
         return id;

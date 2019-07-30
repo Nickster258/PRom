@@ -5,11 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.stonecipher.command.usercommand.CreateCommand;
-import org.stonecipher.command.usercommand.EditCommand;
-import org.stonecipher.command.usercommand.InfoCommand;
-import org.stonecipher.command.usercommand.ProgramCommand;
-import org.stonecipher.command.usercommand.VersionCommand;
+import org.stonecipher.command.usercommand.*;
 
 public class RomCommand implements CommandExecutor {
     @Override
@@ -22,10 +18,10 @@ public class RomCommand implements CommandExecutor {
 
         // Then do user-ambiguous commands
         switch (command.getName()) {
-            case "version":
-                return new VersionCommand("version", "prom.version").execute(commandSender, command, s, strings);
             case "info":
                 return new InfoCommand("info", "prom.create").execute(commandSender, command, s, strings);
+            case "version":
+                return new VersionCommand("version", "prom.version").execute(commandSender, command, s, strings);
         }
 
         // Check if player is user to do the other commands
@@ -34,12 +30,20 @@ public class RomCommand implements CommandExecutor {
         }
 
         switch (command.getLabel()) {
+            case "cancel":
+                return new CancelCommand("cancel", "prom.create").execute(commandSender, command, s, strings);
+            case "confirm":
+                return new ConfirmCommand("confirm", "prom.create").execute(commandSender, command, s, strings);
             case "create":
                 return new CreateCommand("create", "prom.create").execute(commandSender, command, s, strings);
             case "edit":
                 return new EditCommand("edit", "prom.edit").execute(commandSender, command, s, strings);
+            case "exit":
+                return new ExitCommand("exit", "prom.create").execute(commandSender, command, s, strings);
             case "program":
                 return new ProgramCommand("program", "prom.program").execute(commandSender, command, s, strings);
+            case "undo":
+                return new UndoCommand("undo", "prom.create").execute(commandSender, command, s, strings);
         }
 
         // Since no valid command should ever reach this point

@@ -6,21 +6,22 @@ import org.stonecipher.PRom;
 import org.stonecipher.command.RomBuilderSubCommand;
 import org.stonecipher.editor.RomBuilder;
 
-public class CreateCommand extends RomBuilderSubCommand {
+public class UndoCommand extends RomBuilderSubCommand {
 
-    public CreateCommand(String name, String permission) {
+    public UndoCommand(String name, String permission) {
         super(name, permission);
     }
 
     @Override
     public boolean execute(Player player, Command cmd, String commandLabel, String[] args) {
-        if (args.length < 3) {
-            return false;
-        }
+        RomBuilder builder = PRom.getBuilder(player);
 
-        // TODO get rid of unsafe cast
-        PRom.builders.add(new RomBuilder(player, args[0], Integer.valueOf(args[1]), Integer.valueOf(args[2])));
+        boolean result = builder.undoLastEdit();
+        if (result) {
+            PRom.sendMessage(player, "Undo successful.");
+        } else {
+            PRom.sendMessage(player, "Nothing left to undo.");
+        }
         return true;
     }
-
 }
