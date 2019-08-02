@@ -3,7 +3,6 @@ package org.stonecipher.repository;
 import org.stonecipher.entity.Program;
 
 import javax.persistence.EntityManager;
-import java.util.UUID;
 
 public class ProgramRepositoryImpl implements ProgramRepository {
 
